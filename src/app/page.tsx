@@ -291,7 +291,7 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl">
+            <div className="bg-white p-4 sm:p-8 rounded-2xl shadow-xl">
               <h3 className="font-headline text-lg font-bold text-deep-obsidian mb-6">Consultation Request</h3>
               {formSubmitted ? (
                 <div className="py-12 text-center space-y-4">
@@ -307,7 +307,7 @@ export default function Home() {
                 </div>
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold text-text-slate uppercase tracking-wider mb-2">First Name</label>
                       <input
