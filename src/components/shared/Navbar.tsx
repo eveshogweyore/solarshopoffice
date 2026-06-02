@@ -38,6 +38,7 @@ export default function Navbar() {
   ];
 
   return (
+    <>
     <nav className="fixed top-0 w-full z-50 glass-nav border-b border-stroke-soft h-20 shadow-sm transition-all duration-300">
       <div className="flex justify-between items-center px-4 md:px-margin-desktop h-full max-w-container-max mx-auto">
         {/* Brand Logo */}
@@ -195,79 +196,81 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer Overlay */}
-      {mobileMenuOpen && (
-        <>
-          {/* Backdrop */}
-          <div
-            className="md:hidden"
-            style={{ position: 'fixed', inset: 0, top: '5rem', backgroundColor: 'rgba(15, 23, 42, 0.4)', backdropFilter: 'blur(4px)', zIndex: 40 }}
-            onClick={() => setMobileMenuOpen(false)}
-          />
-          {/* Drawer Panel */}
-          <div
-            className="md:hidden"
-            style={{ position: 'fixed', top: '5rem', right: 0, bottom: 0, width: '18rem', backgroundColor: '#ffffff', borderLeft: '1px solid #E2E8F0', padding: '1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', overflowY: 'auto', zIndex: 50, boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)' }}
-          >
-            <div className="space-y-6">
-              <p className="text-xs font-black text-text-slate uppercase tracking-wider">Menu</p>
-              <div className="flex flex-col gap-4">
-                {!user && navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="font-semibold text-lg text-deep-obsidian hover:text-primary transition-colors duration-200"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
+    </nav>
 
-            <div className="border-t border-stroke-soft pt-6 space-y-4">
-              {user ? (
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-deep-obsidian text-white flex items-center justify-center font-bold">
-                      {user.fullName.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="font-bold text-deep-obsidian">{user.fullName}</p>
-                      <p className="text-xs text-text-slate truncate">{user.email}</p>
-                    </div>
-                  </div>
-                  <Link
-                    href={user.role === "SUPER_ADMIN" ? "/admin" : "/dashboard"}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="w-full py-3 bg-surface-container text-deep-obsidian rounded-xl text-center font-bold text-sm block hover:bg-surface-container-high transition-colors"
-                  >
-                    Go to Dashboard
-                  </Link>
-                  <button
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      logout();
-                      router.push("/");
-                    }}
-                    className="w-full py-3 border border-red-200 text-red-600 rounded-xl text-center font-bold text-sm block hover:bg-red-50 transition-colors"
-                  >
-                    Sign Out
-                  </button>
-                </div>
-              ) : (
+    {/* Mobile Drawer - MUST be outside <nav> because glass-nav's backdrop-filter creates a containing block that traps position:fixed children */}
+    {mobileMenuOpen && (
+      <>
+        {/* Backdrop */}
+        <div
+          className="md:hidden"
+          style={{ position: 'fixed', inset: 0, top: '5rem', backgroundColor: 'rgba(15, 23, 42, 0.4)', backdropFilter: 'blur(4px)', zIndex: 40 }}
+          onClick={() => setMobileMenuOpen(false)}
+        />
+        {/* Drawer Panel */}
+        <div
+          className="md:hidden"
+          style={{ position: 'fixed', top: '5rem', right: 0, bottom: 0, width: '18rem', backgroundColor: '#ffffff', borderLeft: '1px solid #E2E8F0', padding: '1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', overflowY: 'auto', zIndex: 50, boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)' }}
+        >
+          <div className="space-y-6">
+            <p className="text-xs font-black text-text-slate uppercase tracking-wider">Menu</p>
+            <div className="flex flex-col gap-4">
+              {!user && navLinks.map((link) => (
                 <Link
-                  href="/login"
+                  key={link.name}
+                  href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full py-3 bg-deep-obsidian text-white rounded-xl text-center font-bold block hover:bg-black transition-colors"
+                  className="font-semibold text-lg text-deep-obsidian hover:text-primary transition-colors duration-200"
                 >
-                  Sign In / Create Account
+                  {link.name}
                 </Link>
-              )}
+              ))}
             </div>
           </div>
-        </>
-      )}
-    </nav>
+
+          <div className="border-t border-stroke-soft pt-6 space-y-4">
+            {user ? (
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-deep-obsidian text-white flex items-center justify-center font-bold">
+                    {user.fullName.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="font-bold text-deep-obsidian">{user.fullName}</p>
+                    <p className="text-xs text-text-slate truncate">{user.email}</p>
+                  </div>
+                </div>
+                <Link
+                  href={user.role === "SUPER_ADMIN" ? "/admin" : "/dashboard"}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full py-3 bg-surface-container text-deep-obsidian rounded-xl text-center font-bold text-sm block hover:bg-surface-container-high transition-colors"
+                >
+                  Go to Dashboard
+                </Link>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    logout();
+                    router.push("/");
+                  }}
+                  className="w-full py-3 border border-red-200 text-red-600 rounded-xl text-center font-bold text-sm block hover:bg-red-50 transition-colors"
+                >
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <Link
+                href="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-3 bg-deep-obsidian text-white rounded-xl text-center font-bold block hover:bg-black transition-colors"
+              >
+                Sign In / Create Account
+              </Link>
+            )}
+          </div>
+        </div>
+      </>
+    )}
+    </>
   );
 }
