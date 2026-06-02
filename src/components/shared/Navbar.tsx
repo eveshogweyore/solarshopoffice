@@ -197,8 +197,12 @@ export default function Navbar() {
 
       {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 top-20 bg-deep-obsidian/40 backdrop-blur-sm z-40 md:hidden animate-in fade-in duration-200 flex justify-end">
-          <div className="w-72 bg-white border-l border-stroke-soft p-6 flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-300 shadow-2xl">
+        <>
+          <div 
+            className="fixed inset-0 top-20 bg-deep-obsidian/40 backdrop-blur-sm z-40 md:hidden animate-in fade-in duration-200" 
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          <div className="fixed right-0 top-20 bottom-0 w-72 bg-white border-l border-stroke-soft p-6 flex flex-col justify-between overflow-y-auto z-50 md:hidden animate-in slide-in-from-right duration-300 shadow-2xl">
             <div className="space-y-6">
               <p className="text-xs font-black text-text-slate uppercase tracking-wider">Menu</p>
               <div className="flex flex-col gap-4">
@@ -256,7 +260,7 @@ export default function Navbar() {
               )}
             </div>
           </div>
-        </div>
+        </>
       )}
     </nav>
   );
