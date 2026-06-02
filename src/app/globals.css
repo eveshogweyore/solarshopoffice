@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #F59E0B;
+  --color-primary-dark: #D97706;
+  --color-secondary: #0F172A;
+  --color-accent: #10B981;
+  --color-bg-neutral: #F8FAFC;
+  --color-text-ink: #111827;
+  --color-text-slate: #64748B;
+  --color-stroke-soft: #E2E8F0;
+  
+  /* Brand Identity Guidelines */
+  --color-sunlight-amber: #F59E0B;
+  --color-deep-obsidian: #0F172A;
+  --color-eco-emerald: #10B981;
+  --color-slate-surface: #F8FAFC;
+  
+  /* Surfaces and Layers */
+  --color-surface: #ffffff;
+  --color-surface-dim: #cbdbf5;
+  --color-surface-bright: #f8f9ff;
+  --color-surface-container: #e5eeff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #eff4ff;
+  --color-surface-container-high: #dce9ff;
+  --color-surface-container-highest: #d3e4fe;
+  
+  /* Custom Spacing & Borders */
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+
+  /* Typographic Pairing linked directly to link imports */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-headline: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root {
+  --background: #F8FAFC;
+  --foreground: #111827;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+/* Custom Utilities */
+.glass-nav {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.dark .glass-nav {
+  backdrop-filter: blur(12px);
+  background-color: rgba(15, 23, 42, 0.85);
+}
+
+.hero-gradient {
+  background: linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.5) 50%, rgba(15, 23, 42, 0) 100%);
+}
+
+.spec-table tr:nth-child(even) { 
+  background-color: #F8FAFC; 
+}
+
+/* Hide scrollbar helper */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
