@@ -41,13 +41,13 @@ export default function Navbar() {
     <nav className="fixed top-0 w-full z-50 glass-nav border-b border-stroke-soft h-20 shadow-sm transition-all duration-300">
       <div className="flex justify-between items-center px-4 md:px-margin-desktop h-full max-w-container-max mx-auto">
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center cursor-pointer shrink-0">
+        <Link href="/" className="flex items-center cursor-pointer shrink-1 min-w-0">
           <Image
             src="/logo.png"
             alt="SolarShopoffice Ltd"
             width={711}
             height={121}
-            className="h-8 w-auto object-contain"
+            className="h-6 sm:h-8 w-auto object-contain max-w-full"
             priority
           />
         </Link>
@@ -79,7 +79,7 @@ export default function Navbar() {
         </div>
 
         {/* Action icons */}
-        <div className="flex items-center gap-2 md:gap-4">
+        <div className="flex items-center gap-1 sm:gap-2 md:gap-4 shrink-0">
           <button 
             onClick={() => setSearchOpen(true)}
             aria-label="Search Catalog"
@@ -176,7 +176,7 @@ export default function Navbar() {
             ) : (
               <Link
                 href="/login"
-                className="flex items-center gap-2 px-4 py-2 bg-deep-obsidian text-white rounded-lg text-sm font-semibold hover:bg-black transition-all duration-200 active:scale-95 shadow-sm shadow-slate-900/10 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
+                className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-deep-obsidian text-white rounded-lg text-sm font-semibold hover:bg-black transition-all duration-200 active:scale-95 shadow-sm shadow-slate-900/10 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
               >
                 <User className="w-4 h-4" />
                 <span className="hidden sm:inline">Sign In</span>
@@ -187,7 +187,7 @@ export default function Navbar() {
           {/* Mobile menu toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2.5 text-deep-obsidian hover:bg-surface-container rounded-full md:hidden transition-all duration-200"
+            className="p-1.5 sm:p-2.5 text-deep-obsidian hover:bg-surface-container rounded-full md:hidden transition-all duration-200"
             aria-label="Toggle Mobile Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
